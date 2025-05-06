@@ -1,0 +1,110 @@
+<!Doctype="html">
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <script>
+        //// define a mixin object
+        //var myMixin = {
+        //    created: function () {
+        //        this.hello()
+        //    },
+        //    methods: {
+        //        hello: function () {
+        //            alert('hello from mixin!');
+        //        }
+        //    }
+        //}
+
+        //// define a component that uses this mixin
+        //var Component = Vue.extend({
+        //    mixins: [myMixin]
+        //})
+
+        //var component = new Component() // => "hello from mixin!"
+
+        //var mixin = {
+        //    data: function () {
+        //        return {
+        //            message: 'hello',
+        //            foo: 'abc'
+        //        }
+        //    }
+        //}
+
+        //new Vue({
+        //    mixins: [mixin, myMixin],
+        //    data: function () {
+        //        return {
+        //            message: 'goodbye',
+        //            bar: 'def'
+        //        }
+        //    },
+        //    created: function () {
+        //        alert(this.$data.message);
+        //        // => { message: "goodbye", foo: "abc", bar: "def" }
+        //    }
+        //})
+
+        //var mixin = {
+        //    created: function () {
+        //        alert('mixin hook called')
+        //    }
+        //}
+
+        //new Vue({
+        //    mixins: [mixin],
+        //    created: function () {
+        //        alert('component hook called')
+        //    }
+        //})
+
+        //// => "mixin hook called"
+        //// => "component hook called"
+
+        //var mixin = {
+        //    methods: {
+        //        foo: function () {
+        //            alert('foo')
+        //        },
+        //        conflicting: function () {
+        //            alert('from mixin')
+        //        }
+        //    }
+        //}
+
+        //var vm = new Vue({
+        //    mixins: [mixin],
+        //    methods: {
+        //        bar: function () {
+        //            alert('bar')
+        //        },
+        //        conflicting: function () {
+        //            alert('from self')
+        //        }
+        //    }
+        //})
+
+        //vm.foo() // => "foo"
+        //vm.bar() // => "bar"
+        //vm.conflicting() // => "from self"
+
+        // inject a handler for `myOption` custom option
+        Vue.mixin({
+            created: function () {
+                var myOption = this.$options.myOption
+                if (myOption) {
+                    alert(myOption)
+                }
+            }
+        })
+
+        new Vue({
+            myOption: 'hello from Global Mixin!'
+        })
+        // => "hello!"
+
+    </script>
+</body>
+</html>

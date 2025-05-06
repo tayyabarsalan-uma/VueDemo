@@ -1,0 +1,45 @@
+<!Doctype="html">
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@4.0.15/dist/vue-router.global.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <template>
+            <div>
+                <router-view></router-view>
+            </div>
+        </template>
+    </div>
+
+    <script>
+
+        Vue.component('add', {
+            template: '<p>You are viewing the list page</p>'
+        });
+
+        Vue.component('list', {
+            template: '<p>You are viewing the add page</p>'
+        });
+
+        const routes = [
+            { path: '/list', component: "list" },
+            { path: '/add', component: "add" },
+        ];
+
+        const router = new VueRouter({
+            routes: routes
+        })
+
+        Vue.use(VueRouter);
+
+        var app = new Vue({
+            el: '#app',
+            router: router
+        })
+
+    </script>
+</body>
+</html>

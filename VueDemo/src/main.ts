@@ -8,14 +8,18 @@ import TheWelcome from './components/TheWelcome.vue'
 import Default from './components/Default.vue'
 import Refs from './components/Refs.vue'
 import Tabs from './components/Tabs.vue'
-
+import LifeCycle from './components/LifeCycle.vue'
+import Vuex from './components/Vuex.vue'
+import store from './store/store'
 
 const routes = [
     { path: '/', component: Default },
     { path: '/hello', component: HelloWorld },
     { path: '/about', component: TheWelcome },
     { path: '/refs', component: Refs },
-    { path: '/tabs', component: Tabs }
+    { path: '/tabs', component: Tabs },
+    { path: '/lifecycle', component: LifeCycle },
+    { path: '/vuex', component: Vuex }
 ]
 
 const router = createRouter({
@@ -23,4 +27,4 @@ const router = createRouter({
     routes: routes
 });
 
-createApp(App).use(router).mount('#app')
+createApp(App).use(router).use(store).mount('#app')

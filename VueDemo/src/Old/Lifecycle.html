@@ -1,0 +1,60 @@
+<div id="app">
+    <button @click="toggleComponent">Toggle Component</button>
+    <button @click="increment">Increment Counter</button>
+    <hr>
+    <keep-alive><lifecycle-demo v-if="showChild" :counter="counter"></lifecycle-demo></keep-alive>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+Vue.component('lifecycle-demo', {
+    props: ['counter'],
+    template: `<div>Counter: {{ counter }}</div>`,
+  beforeCreate() {
+    console.log('Vue 2 - beforeCreate');
+  },
+  created() {
+    console.log('Vue 2 - created');
+  },
+  beforeMount() {
+    console.log('Vue 2 - beforeMount');
+  },
+  mounted() {
+    console.log('Vue 2 - mounted');
+  },
+  beforeUpdate() {
+    console.log('Vue 2 - beforeUpdate');
+  },
+  updated() {
+    console.log('Vue 2 - updated');
+  },
+  beforeDestroy() {
+    console.log('Vue 2 - beforeDestroy');
+  },
+  destroyed() {
+    console.log('Vue 2 - destroyed');
+  },
+  activated() {
+    console.log('child-component: activated');
+  },
+  deactivated() {
+    console.log('child-component: deactivated');
+  },
+});
+
+new Vue({
+  el: '#app',
+data: {
+  showChild: true,
+  counter: 0
+},
+methods: {
+  toggleComponent() {
+    this.showChild = !this.showChild;
+  },
+  increment() {
+    this.counter++;
+  }
+}
+});
+</script>

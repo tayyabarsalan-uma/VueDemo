@@ -1,0 +1,68 @@
+<div id="app">
+    <button @click="toggleComponent">Toggle Component</button>
+    <button @click="increment">Increment Counter</button>
+    <hr>
+    <keep-alive>
+        <child-component v-if="showChild" :counter="counter"></child-component>
+    </keep-alive>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+const ChildComponent = {
+  props: ['counter'],
+  template: `<div>Counter: {{ counter }}</div>`,
+  beforeCreate() {
+    console.log('child-component: beforeCreate');
+  },
+  created() {
+    console.log('child-component: created');
+  },
+  beforeMount() {
+    console.log('child-component: beforeMount');
+  },
+  mounted() {
+    console.log('child-component: mounted');
+  },
+  beforeUpdate() {
+    console.log('child-component: beforeUpdate');
+  },
+  updated() {
+    console.log('child-component: updated');
+  },
+  activated() {
+    console.log('child-component: activated');
+  },
+  deactivated() {
+    console.log('child-component: deactivated');
+  },
+  beforeUnmount() {
+    console.log('child-component: beforeUnmount');
+  },
+  unmounted() {
+    console.log('child-component: unmounted');
+  }
+};
+
+const App = {
+  components: {
+    'child-component': ChildComponent
+  },
+  data() {
+    return {
+      showChild: true,
+      counter: 0
+    };
+  },
+  methods: {
+    toggleComponent() {
+      this.showChild = !this.showChild;
+    },
+    increment() {
+      this.counter++;
+    }
+  }
+};
+
+Vue.createApp(App).mount('#app');
+</script>

@@ -1,6 +1,17 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 
+import VuexORM from '@vuex-orm/core'
+import User from '../models/user'
+import Post from '../models/post'
+
+// Create a new instance of Database.
+const database = new VuexORM.Database()
+
+// Register Models to Database.
+database.register(User)
+database.register(Post)
+
 export default createStore({
     state: {
         counter: 0,
@@ -47,5 +58,6 @@ export default createStore({
     },
     modules: {
 
-    }
+    },
+    plugins: [VuexORM.install(database)]
 });

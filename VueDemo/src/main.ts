@@ -11,6 +11,7 @@ import Tabs from './components/Tabs.vue'
 import LifeCycle from './components/LifeCycle.vue'
 import Vuex from './components/Vuex.vue'
 import store from './store/store'
+import vuexORM from './components/user/UserForm.vue'
 
 const routes = [
     { path: '/', component: Default },
@@ -19,7 +20,8 @@ const routes = [
     { path: '/refs', component: Refs },
     { path: '/tabs', component: Tabs },
     { path: '/lifecycle', component: LifeCycle },
-    { path: '/vuex', component: Vuex }
+    { path: '/vuex', component: Vuex },
+    { path: '/vuexORM', component: vuexORM }
 ]
 
 const router = createRouter({
